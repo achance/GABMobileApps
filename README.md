@@ -61,14 +61,14 @@ Mobile Apps Demo for Azure Boot Camp 2018
 
 ![Database Connection][DB1]
 
-[DB1]: https://github.com/achance/GABMobileApps/blob/master/Screenshots/DB1.png?raw=true "Database Connection"
+[DB1]: https://github.com/achance/GABMobileApps/blob/master/Screenshots/DB1.PNG?raw=true "Database Connection"
 
 Follow the prompts to add a new data connection. Create a new database. Fill in the required info. Create a new server.
 To keep things simple, we can name our database and server similar to our app. You can keep the default settings for location and pricing tier.
 
 ![Database Connection 2][DB2]
 
-[DB2]: https://github.com/achance/GABMobileApps/blob/master/Screenshots/DB2.png?raw=true "Database Connection"
+[DB2]: https://github.com/achance/GABMobileApps/blob/master/Screenshots/DB2.PNG?raw=true "Database Connection"
 
 
 
