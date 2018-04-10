@@ -37,3 +37,38 @@ Mobile Apps Demo for Azure Boot Camp 2018
 
 [MAQDeploy]: https://github.com/achance/GABMobileApps/blob/master/Screenshots/MAQDeploy.PNG?raw=true "Deploy App"
 
+## Configure the server project ##
+
+1. From the main dashboard, select your newly created App Service for your mobile app
+   * If you don't see this on your dashboard, click the **App Services** icon from the menu
+   and then choose your App Service. 
+   
+![Dashboard][Dashboard]
+
+[Dashboard]: https://github.com/achance/GABMobileApps/blob/master/Screenshots/Dashboard.PNG?raw=true "Dashboard"
+
+![App Services][AppServices]
+
+[AppServices]: https://github.com/achance/GABMobileApps/blob/master/Screenshots/AppServices.PNG?raw=true "App Services"
+
+2. Under **Deployment**, choose the **Quickstart** option. Select your platform (for this example, we will be using the **Cordova** platform).
+
+![Quickstart][Quickstart]
+
+[Quickstart]: https://github.com/achance/GABMobileApps/blob/master/Screenshots/Quickstart.PNG?raw=true "Quickstart"
+
+3. Create and configure the database. By default, the Quickstart app will come with SQLite enabled, but we want to create a standalone SQL Database.
+
+![Database Connection][DB1]
+
+[DB1]: https://github.com/achance/GABMobileApps/blob/master/Screenshots/DB1.png?raw=true "Database Connection"
+
+Follow the prompts to add a new data connection. Create a new database. Fill in the required info. Create a new server.
+To keep things simple, we can name our database and server similar to our app. You can keep the default settings for location and pricing tier.
+
+![Database Connection 2][DB2]
+
+[DB2]: https://github.com/achance/GABMobileApps/blob/master/Screenshots/DB2.png?raw=true "Database Connection"
+
+
+
