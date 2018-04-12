@@ -92,3 +92,16 @@ This will create the to-do item table in the database you selected in the previo
 [AppDownload]: https://github.com/achance/GABMobileApps/blob/master/Screenshots/AppDownload.PNG?raw=true "App Download"
 
 This will download a ZIP file containing the project for the Quickstart demo. 
+
+7. Extract the ZIP file. Locate the solution file (.sln) and open it with Visual Studio. **Visual Studio 2017** is recommeded for working with this demo.  
+
+8. In Visual Studio, if you are prompted to upgrade the project, then do so. Select your platform from the drop-down options. For this demo, we will focus on **Android**. 
+Choose the default option to run the emulator in your browser. 
+
+![VS Debug][VSDebug]
+
+[VSDebug]: https://github.com/achance/GABMobileApps/blob/master/Screenshots/VSDebug.PNG?raw=true "VS Debug"
+
+9. To run your app, press **F5** or click on the green start arrow. The app should launch in the Chrome browser. Test the app's functionality by adding a new "To-do" item.
+
+The demo app is setup to insert the data into your **TodoItem** table for the SQL database that was configured on the mobile app backend. The app will display the items (records) available in the table inside of a list.
