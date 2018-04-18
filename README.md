@@ -105,3 +105,16 @@ Choose the default option to run the emulator in your browser.
 9. To run your app, press **F5** or click on the green start arrow. The app should launch in the Chrome browser. Test the app's functionality by adding a new "To-do" item.
 
 The demo app is setup to insert the data into your **TodoItem** table for the SQL database that was configured on the mobile app backend. The app will display the items (records) available in the table inside of a list.
+
+
+## Configure Authentication 
+
+Once the demo mobile app is setup and running, we can add authentication. For this demo, we will setup Google Authentication, but you could use any available compatible provider. 
+
+To configure Google authentication, you must register your application with Google. To do this, you will need a Google account. If you don't already have one, or don't want to use your personal account, you will need to create an account. This account must have a valid email address. 
+
+From the **Azure Portal**, navigate to your mobile app. From the Overview tab, locate and copy the URL for your application. This will be needed to register with Google. The url should be in the format: **https://myappname.azurewebsites.net**
+
+
+
+
