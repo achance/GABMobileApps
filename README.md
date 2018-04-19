@@ -17,6 +17,7 @@ Mobile Apps Demo for Azure Boot Camp 2018
 [MAQ1]: https://github.com/achance/GABMobileApps/blob/master/Screenshots/MAQ.PNG?raw=true "Search for Mobile Apps"
 
 4. Select the appropriate resource.
+
 5. Click on **Create**.
 
 ![MAQ Image 2][MAQCreate]
@@ -24,6 +25,7 @@ Mobile Apps Demo for Azure Boot Camp 2018
 [MAQCreate]: https://github.com/achance/GABMobileApps/blob/master/Screenshots/MAQCreate.PNG?raw=true "Create Quickstart App"
 
 6. Give your app a name.
+
 7. By default, it should create a new resource group with the same name as your app. 
    * You could use an existing resource group, or name your resource group differently.
 
@@ -113,7 +115,62 @@ Once the demo mobile app is setup and running, we can add authentication. For th
 
 To configure Google authentication, you must register your application with Google. To do this, you will need a Google account. If you don't already have one, or don't want to use your personal account, you will need to create an account. This account must have a valid email address. 
 
-From the **Azure Portal**, navigate to your mobile app. From the Overview tab, locate and copy the URL for your application. This will be needed to register with Google. The url should be in the format: **https://myappname.azurewebsites.net**
+1. From the **Azure Portal**, navigate to your mobile app. From the Overview tab, locate and copy the URL for your application. This will be needed to register with Google. The url should be in the format: **https://myappname.azurewebsites.net**
+
+2. Navigate to the **Google APIs Console** at https://console.developers.google.com, sign into the Google account you want to use when prompted. 
+
+3. To register your application, you need to **Create a project** to associate with your Azure app. From the main dashboard, click on **Create Project** 
+
+![Google API Project][GoogleAPICP]
+
+[GoogleAPICP]: https://github.com/achance/GABMobileApps/blob/master/Screenshots/GoogleAPICP.PNG?raw=true "Google API Project"
+
+Name your project and then click on **Create**. Wait a few moments for the creation to complete, and then you should be back at the main dashboard.
+
+4. Click on **Library** from the menu on the left. We want to enable the **Google+ API**. You can use the search box, or click on the **Social** category, and choose it from there. 
+After you select the appropriate API, click on **Enable**
+
+![Google API Google+][GoogleAPIGPlus]
+
+[GoogleAPIGPlus]: https://github.com/achance/GABMobileApps/blob/master/Screenshots/GoogleAPIGPlus.PNG?raw=true "Google API Credentials"
+
+5. Now we need to configure the **Credentials** for the app. Click on the **Credentials** icon on the left, and then click on the **OAuth Consent Screen** tab. Choose an **Email address**, enter a **Product name**, and then click on **Save**.
+
+![Google API Credentials][GoogleAPICred]
+
+[GoogleAPICred]: https://github.com/achance/GABMobileApps/blob/master/Screenshots/GoogleAPICred.PNG?raw=true "Google API Credentials"
+
+Back on the **Credentials** tab, click **Create Credentials**, **OAuth Client ID**, and then select **Web application**. 
+
+![Google API Credentials][GoogleAPICred1]
+
+[GoogleAPICred1]: https://github.com/achance/GABMobileApps/blob/master/Screenshots/GoogleAPICred1.PNG?raw=true
+
+Enter a name for your OAuth Client ID. Under **Restrictions**, enter the URL for your app into **Authorized Javascript origins**. This should be the URL you copied from the Azure portal in step 1. 
+For the **Authorized Redirect URI**, append your URL with the following: **_/.auth/login/google/callback_**. For example, **https://myappname.azurewebsites.net/.auth/login/google/callback**. 
+Ensure that your URLs begins with **https://**. Once you have added the URLs, click on **Create**. 
+
+7. You should see a screen with you **OAuth Client ID** and **Client Secret**. Copy these for reference in a later step. 
+
+8. Now we need to make the changes in Azure to finish setting up the Google Authentication. Navigate back to the **Azure Portal**, and click on your application. Under **Settings**, click on **Authentication/Authorization**.
+
+![Azure App Settings][AppSettingsAuth]
+
+[AppSettingsAuth]: https://github.com/achance/GABMobileApps/blob/master/Screenshots/AppSettingsAuth.PNG?raw=true "Azure App Authentication" 
+
+3. Toggle **App Service Authentication** to **ON**. Then select **Google** under **Authentication Providers**. Paste in your **Client ID** and **Client Secret** from Google and then click **OK**. 
+
+4. ``Now we have enabled Google Authentication, but our settings will still allow any user to access the app. Azure App Service defaults to anonymous access. 
+To fix this, change the **Action to take when request is not authenticated** to **Log in with Google**, and then click **Save**. 
+This setting forces the app to require all requests to be authenticated. If any request isn't already authenticated, then it will redirect to Google for the authentication. 
+
+![Azure App Settings][AppSettingsAuth2]
+
+[AppSettingsAuth2]: https://github.com/achance/GABMobileApps/blob/master/Screenshots/AppSettingsAuth2.PNG?raw=true "Azure App Authentication"
+
+Note, we have still only configured **Authentication**. Users will be authenticated to the app, but any addtional **Authorization** would need to be setup if we wanted to control or restrict access. 
+
+We can test our configuration now by simply navigating to the app URL in a web browser. If everything is configured correctly, then you should see the redirect for the Google authentication. 
 
 
 
