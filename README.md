@@ -115,11 +115,11 @@ Once the demo mobile app is setup and running, we can add authentication. For th
 
 To configure Google authentication, you must register your application with Google. To do this, you will need a Google account. If you don't already have one, or don't want to use your personal account, you will need to create an account. This account must have a valid email address. 
 
-1. From the **Azure Portal**, navigate to your mobile app. From the Overview tab, locate and copy the URL for your application. This will be needed to register with Google. The url should be in the format: **https://myappname.azurewebsites.net**
+1. From the **Azure Portal**, navigate to your mobile app. From the **Overview** tab, locate and copy the **URL** for your application. This is needed to register with Google. The **URL** should be in the format: `https://myappname.azurewebsites.net`
 
-2. Navigate to the **Google APIs Console** at https://console.developers.google.com, sign into the Google account you want to use when prompted. 
+2. Navigate to the **[Google APIs Console](https://console.developers.google.com)**, sign into the Google account you want to use when prompted. 
 
-3. To register your application, you need to **Create a project** to associate with your Azure app. From the main dashboard, click on **Create Project** 
+3. To register your application, you need to create a project to associate with your Azure app. From the main dashboard, click on **Create Project** 
 
 ![Google API Project][GoogleAPICP]
 
@@ -146,11 +146,14 @@ Back on the **Credentials** tab, click **Create Credentials**, **OAuth Client ID
 
 [GoogleAPICred1]: https://github.com/achance/GABMobileApps/blob/master/Screenshots/GoogleAPICred1.PNG?raw=true
 
-Enter a name for your OAuth Client ID. Under **Restrictions**, enter the URL for your app into **Authorized Javascript origins**. This should be the URL you copied from the Azure portal in step 1. 
-For the **Authorized Redirect URI**, append your URL with the following: **_/.auth/login/google/callback_**. For example, **https://myappname.azurewebsites.net/.auth/login/google/callback**. 
-Ensure that your URLs begins with **https://**. Once you have added the URLs, click on **Create**. 
+Enter a name for your **OAuth Client ID**. Under **Restrictions**, enter the URL for your app into **Authorized Javascript origins**. This should be the URL you copied from the Azure portal in step 1. 
+For the **Authorized Redirect URI**, append your URL with the following: **_/.auth/login/google/callback_**. 
 
-7. You should see a screen with you **OAuth Client ID** and **Client Secret**. Copy these for reference in a later step. 
+For example, `https://myappname.azurewebsites.net/.auth/login/google/callback`
+ 
+Ensure that both URLs begin with **https://**. Once you have added the URLs, click on **Create**. 
+
+7. Now, you should see a screen with your **OAuth Client ID** and **Client Secret**. Copy these for reference in a later step. 
 
 8. Now we need to make the changes in Azure to finish setting up the Google Authentication. Navigate back to the **Azure Portal**, and click on your application. Under **Settings**, click on **Authentication/Authorization**.
 
@@ -160,7 +163,7 @@ Ensure that your URLs begins with **https://**. Once you have added the URLs, cl
 
 3. Toggle **App Service Authentication** to **ON**. Then select **Google** under **Authentication Providers**. Paste in your **Client ID** and **Client Secret** from Google and then click **OK**. 
 
-4. ``Now we have enabled Google Authentication, but our settings will still allow any user to access the app. Azure App Service defaults to anonymous access. 
+4. Now we have enabled Google Authentication, but our settings will still allow any user to access the app. Azure App Service defaults to anonymous access. 
 To fix this, change the **Action to take when request is not authenticated** to **Log in with Google**, and then click **Save**. 
 This setting forces the app to require all requests to be authenticated. If any request isn't already authenticated, then it will redirect to Google for the authentication. 
 
@@ -171,6 +174,28 @@ This setting forces the app to require all requests to be authenticated. If any 
 Note, we have still only configured **Authentication**. Users will be authenticated to the app, but any addtional **Authorization** would need to be setup if we wanted to control or restrict access. 
 
 We can test our configuration now by simply navigating to the app URL in a web browser. If everything is configured correctly, then you should see the redirect for the Google authentication. 
+
+## Configure backend to restrict permissions
+
+Azure app service also defaults anonymous access for the backend APIs. Since we have authentication configured, we want to restrict access for authenticated clients only. 
+
+There are a few ways that we can set this up, but for the purpose of the demo, we are going to use the Azure portal. This option is only available for the **Node.js** backend, which should be configured already. 
+
+1. From the **Azure portal**, navigate back to your app, and then under **Mobile**, select **Easy Tables**.  
+
+![Easy Tables][EasyTables]
+
+[EasyTables]: https://github.com/achance/GABMobileApps/blob/master/Screenshots/EasyTables.PNG?raw=true "Easy Tables"
+
+2. Select the **todoitem** table that should have been created earlier. Click **Change Permissions** and then change all of the permissions to **Authenticated access only** and **Save**. 
+
+3. Now, we should have restricted anonymous access to our app's backend. We can test this is working in **Visual Studio**. Open the project that you downloaded earlier. Run the app in the browser emulator, and you should see the error for **Unexpected connection failure**. 
+
+![Connection failure][ConnFail]
+
+[ConnFail]: https://github.com/achance/GABMobileApps/blob/master/Screenshots/ConnFail.PNG?raw=true "Connection failure"
+
+
 
 
 
